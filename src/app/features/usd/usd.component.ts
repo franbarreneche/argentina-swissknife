@@ -9,11 +9,43 @@ import { ChartTimelineComponent } from 'src/app/shared/chart-line/chart-timeline
   standalone: true,
   imports: [CommonModule, ChartTimelineComponent],
   template: `
-    <h1 class="text-3xl font-bold underline">
-      USD works!
-    </h1>
-    <button class="btn btn-primary" (click)="changeData()">Button</button>
-    <app-chart-timeline [series]="seriesSubject | async"/>
+    <div class="flex flex-col items-center justify-start w-full h-full">
+
+      <div class="stats shadow">
+        <div class="stat">
+          <div class="stat-title">OFICIAL</div>
+          <div class="stat-value">{{ '275' | currency:'ARS':'symbol-narrow'}}</div>
+          <div class="stat-desc">Jan 1st - Feb 1st</div>
+        </div>        
+        <div class="stat">
+          <div class="stat-title">BLUE</div>
+          <div class="stat-value">{{ '530' | currency:'ARS':'symbol-narrow'}}</div>
+          <div class="stat-desc">↗︎ 400 (22%)</div>
+        </div>        
+        <div class="stat">
+          <div class="stat-title">MEP</div>
+          <div class="stat-value">{{ '488' | currency:'ARS':'symbol-narrow'}}</div>
+          <div class="stat-desc">↘︎ 90 (14%)</div>
+        </div>        
+        <div class="stat">
+          <div class="stat-title">CCL</div>
+          <div class="stat-value">{{ '512' | currency:'ARS':'symbol-narrow'}}</div>
+          <div class="stat-desc">↘︎ 90 (14%)</div>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 shadow-xl grow">
+        <app-chart-timeline [series]="seriesSubject | async"/>
+        <div class="card-body">
+          <h2 class="card-title">Shoes!</h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-primary" (click)="changeData()">Change Data</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>    
   `,
 })
 export class UsdComponent {

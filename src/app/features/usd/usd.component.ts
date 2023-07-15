@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
     <h1 class="text-3xl font-bold underline">
       USD works!
     </h1>
+    <button class="btn btn-primary">Button</button>
+
   `,
   styles: [
   ]

@@ -6,9 +6,9 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <p>
-      usd works!
-    </p>
+    <h1 class="text-3xl font-bold underline">
+      USD works!
+    </h1>
   `,
   styles: [
   ]

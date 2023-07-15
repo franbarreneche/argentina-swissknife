@@ -36,6 +36,12 @@ export class ChartTimelineComponent {
   }
 
   protected chartOption: EChartsOption = {
+    tooltip: {
+      trigger: 'axis',
+      position: function (pt) {
+        return [pt[0], '10%'];
+      }
+    },
     xAxis: {
       type: 'time',
     },

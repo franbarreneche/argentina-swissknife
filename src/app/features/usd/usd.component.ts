@@ -34,16 +34,42 @@ import { ChartTimelineComponent } from 'src/app/shared/chart-line/chart-timeline
         </div>
       </div>
 
-      <div class="card bg-base-100 shadow-xl grow">
-        <app-chart-timeline [series]="seriesSubject | async"/>
-        <div class="card-body">
-          <h2 class="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary" (click)="changeData()">Change Data</button>
+      <ng-container *ngIf="seriesSubject | async as series">
+        <div class="card bg-base-100 shadow-xl grow">        
+          <app-chart-timeline [series]="series"/>
+          <div class="card-body">
+            <h2 class="card-title">Shoes!</h2>   
+            
+            <!-- TABLE -->
+            <div class="overflow-x-auto overflow-y-scroll">
+              <table class="table">
+                <!-- head -->
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Oficial</th>
+                    <th>Blue</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngIf="series.length !== 0">
+                    <tr class="hover" *ngFor="let datapoint of series[0].data; index as i">
+                      <th>{{ datapoint[0] | date}}</th>
+                      <th>{{ datapoint[1] | currency:'ARS':'symbol-narrow'}}</th>
+                      <td>{{ series[1].data[i][1] | currency:'ARS':'symbol-narrow'}}</td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+            </div>
+            <!-- END TABLE -->
+
+            <div class="card-actions justify-end">
+              <button class="btn btn-primary" (click)="changeData()">Change Data</button>
+            </div>
           </div>
-        </div>
-      </div>
+        </div>           
+      </ng-container>        
       
     </div>    
   `,
